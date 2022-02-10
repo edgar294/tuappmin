@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "1082779871074",
+    "project_id": "tuappmin-5920f",
+    "storage_bucket": "tuappmin-5920f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082779871074:android:a6a128a9a586ee63b4ee3b",
+        "android_client_info": {
+          "package_name": "com.asesorarte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082779871074-3ldpeec12ksggagkfedl8hvqh875st8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXIxj5Pb8X1-Dc9mCrwlrarOaHBEQfakM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082779871074-3ldpeec12ksggagkfedl8hvqh875st8u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1082779871074-oe3iuat0l7gjlr29iqv16bga8tc7l64f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "tuappmin"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082779871074:android:fdbee1b6080cc0b6b4ee3b",
+        "android_client_info": {
+          "package_name": "com.tuappmin_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082779871074-kd3i540mg3tc31uns08848detmgpg3a8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tuappmin_app",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1082779871074-3ldpeec12ksggagkfedl8hvqh875st8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXIxj5Pb8X1-Dc9mCrwlrarOaHBEQfakM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082779871074-3ldpeec12ksggagkfedl8hvqh875st8u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1082779871074-oe3iuat0l7gjlr29iqv16bga8tc7l64f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "tuappmin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
