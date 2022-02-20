@@ -92,19 +92,19 @@ export function* login(data) {
         if(data.user.email){
             if (request.status == 200) {
                 yield put(Creators.setStatus({ status: 'warning', message: request.data.error }));
-            } else if (request.status == 201) {
+            } else {
+            //} else (request.status == 201) {
                 const store = {
                     token: request.data.token,
                     user: request.data.user,
                     residencias: request.data.residencias
                 };
-    
+                
                 yield call(storeToken, store);
                 yield put(Creators.authenticateUser(request.data));
-            }
-            else{
+            } /*else{
                 yield put(Creators.setStatus({ status: 'error', message: 'Error de solicitud. Intentalo de nuevo.' }));
-            }
+            }*/
         }        
     } catch (error) {
         yield put(Creators.setStatus({ status: 'error', message: `No se ha podido iniciar sesión` }));

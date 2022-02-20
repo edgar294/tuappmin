@@ -1,17 +1,21 @@
 import React from 'react';
 import {
     StyleSheet, Text, View, Image, TouchableOpacity, ScrollView,
-    SafeAreaView,
+    SafeAreaView, Dimensions
 } from 'react-native';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions } from 'react-native-redux-alert';
 import Styles from '../../asset/styles/styles';
-import { ButtonSubmitRoundedOutlineLayout } from '../layouts/Inputs';
+import { ButtonSubmitRoundedOutlineLayout, ButtonSubmitLayout } from '../layouts/Inputs';
 import { Creators as userCreators } from '../../state/duck/user/user';
 import * as userSelectors from '../../state/duck/user/selector';
 import Loader from '../layouts/loader';
 import TabCorrespondencias from './tabs/TabCorrespondencias';
+import Modal from "react-native-modal";
+const deviceWidth = Dimensions.get("window").width;
+const deviceHeight = Dimensions.get("window").height;
+import FormCorrespondencia from './FormCorrespondencia';
 
 class Correspondencias extends React.Component {
     constructor(props) {
@@ -28,6 +32,23 @@ class Correspondencias extends React.Component {
 
     componentDidUpdate(prevProps) {
 
+    }
+
+    submitCorrespondencia = data => {
+        //this.props.navigation.navigate('Noticias');
+        /*
+        data.token_firebase = this.props.token_firebase;
+        this.onLoading(true);
+        this.props.requestLogin(data);
+        */
+        console.log('enviando nueva correspondencia');
+        console.log(data)
+    }
+
+    _openCloseModal(){
+        this.setState({
+            showModal: !this.state.showModal,
+        });
     }
 
     _navegar(screen) {
@@ -80,7 +101,24 @@ class Correspondencias extends React.Component {
 
                                 <Text style={[Styles.fontBold, { color: '#343a40', fontSize: 16 }]}>Correspondencias</Text>
                             </View>
+                            <ButtonSubmitLayout
+                                handleSubmit={() => this._openCloseModal()}
+                                text="Crear nueva correspondencia"
+                                color="#fff"
+                                backgroundColor="#fd7e14">
+                            </ButtonSubmitLayout>
                         </View>
+
+                        {/** Modal crear pqrs */}
+
+                        <Modal isVisible={this.state.showModal}
+                            onBackdropPress={() => this._openCloseModal()}
+                            deviceWidth={deviceWidth} deviceHeight={deviceHeight}
+                            swipeDirection="left">
+                                <View style={{ backgroundColor: '#fff', borderRadius: 10, padding: 10 }}>
+                                    <FormCorrespondencia submitCorrespondencia={this.submitCorrespondencia}></FormCorrespondencia>
+                                </View>
+                        </Modal>
 
                         <View style={{
                             flexDirection: 'row', justifyContent: 'space-between',

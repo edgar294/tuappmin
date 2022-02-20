@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     StyleSheet, Text, View, Image, TextInput, TouchableOpacity,
-    Platform
+    Platform, Switch
 } from 'react-native';
 import { ErrorMessage } from "formik";
 import CheckBox from '@react-native-community/checkbox';
@@ -129,6 +129,34 @@ export const CheckboxLayout = ({
         </View>
     )
 }
+
+/** CheckBox Layout */
+export const SwitchLayout = ({
+    field,
+    text,
+    form: { handleChange, handleBlur, values, setFieldValue },
+    ...props }) => {
+    return (
+        <View>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={[Styles.fontRegular, { marginLeft: 5, fontSize: 14 }]}>{text}</Text>
+                <Switch
+                    trackColor={{ false: "#767577", true: "#81b0ff" }}
+                    ios_backgroundColor="#3e3e3e"
+                    value={values[field.name]}
+                    onValueChange={(newValue) => setFieldValue(field.name, newValue)}
+                    {...props}
+                />
+            </View>
+            <ErrorMessage name={field.name}>
+                {
+                    message => <Text style={[Styles.errorField, Styles.fontRegular, { color: 'red' }]}>{message}</Text>
+                }
+            </ErrorMessage>
+        </View>
+    )
+}
+
 
 /** Button Submit */
 export const ButtonSubmitLayout = ({
