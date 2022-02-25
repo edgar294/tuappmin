@@ -13,10 +13,21 @@ class FormLogin extends React.Component {
 
         return (
             <View>
-                <Field component={textInputLayout} name="email" placeholder="Email" keyboardType="email-address" icon={require('../../asset/images/icon_user.png')}
-                color="#fff" errorColor="#fff" />
-                <Field component={textInputLayout} name="password" placeholder="Contraseña" secureTextEntry={this.props.values.showPassword ? false : true} icon={require('../../asset/images/icon_lock.png')}
-                color="#fff" errorColor="#fff" />
+                <Field
+                    component={textInputLayout}
+                    name="email"
+                    placeholder="Email"
+                    keyboardType="email-address"
+                    icon={require('../../asset/images/icon_user.png')}
+                    color="#fff" errorColor="#fff" />
+
+                <Field
+                    component={textInputLayout}
+                    name="password"
+                    placeholder="Contraseña"
+                    secureTextEntry={this.props.values.showPassword ? false : true}
+                    icon={require('../../asset/images/icon_lock.png')}
+                    color="#fff" errorColor="#fff" />
 
                 <ButtonSubmitLayout handleSubmit={handleSubmit} disabled={isSubmitting || !isValid} text="INGRESAR"></ButtonSubmitLayout>
             </View>

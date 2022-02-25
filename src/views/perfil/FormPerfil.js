@@ -15,16 +15,50 @@ class FormPerfil extends React.Component {
 
         return (
             <View>
-                <Field component={textInputLayout} name="name" placeholder="Nombre completo" icon={require('../../asset/images/icon_user.png')} autoCapitalize="words" />
-                <Field component={textInputLayout} name="email" placeholder="Email" keyboardType="email-address" icon={require('../../asset/images/icon_email.png')} />
-                <Field component={textInputLayout} name="telefono" placeholder="Teléfono" keyboardType="phone-pad" icon={require('../../asset/images/icon_tel.png')} />
+                <Field
+                    component={textInputLayout}
+                    name="name"
+                    placeholder="Nombre completo"
+                    icon={require('../../asset/images/icon_user.png')}
+                    autoCapitalize="words" />
 
-                <Text style={[Styles.fontRegular, { color: 'orange', fontSize: 13, marginBottom: 15 }]}>Para modificar su contraseña complete estos campos</Text>
+                <Field component={textInputLayout}
+                    name="email"
+                    placeholder="Email"
+                    keyboardType="email-address"
+                    icon={require('../../asset/images/icon_email.png')} />
 
-                <Field component={textInputLayout} name="password" placeholder="Contraseña" secureTextEntry={this.props.values.showPassword ? false : true} icon={require('../../asset/images/icon_lock.png')} />
-                <Field component={textInputLayout} name="password_confirmation" placeholder="Confirmar contraseña" secureTextEntry={this.props.values.showPassword ? false : true} icon={require('../../asset/images/icon_lock.png')} />
+                <Field
+                    component={textInputLayout}
+                    name="telefono"
+                    placeholder="Teléfono"
+                    keyboardType="phone-pad"
+                    icon={require('../../asset/images/icon_tel.png')} />
 
-                <ButtonSubmitLayout handleSubmit={handleSubmit} disabled={isSubmitting || !isValid} text="GUARDAR"></ButtonSubmitLayout>
+                <Text
+                    style={[Styles.fontRegular, { color: 'orange', fontSize: 13, marginBottom: 15 }]}>
+                    Para modificar su contraseña complete estos campos
+                </Text>
+
+                <Field
+                    component={textInputLayout}
+                    name="password"
+                    placeholder="Contraseña"
+                    secureTextEntry={this.props.values.showPassword ? false : true}
+                    icon={require('../../asset/images/icon_lock.png')} />
+
+                <Field
+                    component={textInputLayout}
+                    name="password_confirmation"
+                    placeholder="Confirmar contraseña"
+                    secureTextEntry={this.props.values.showPassword ? false : true}
+                    icon={require('../../asset/images/icon_lock.png')} />
+
+                <ButtonSubmitLayout
+                    handleSubmit={handleSubmit}
+                    disabled={isSubmitting || !isValid}
+                    text="GUARDAR">
+                </ButtonSubmitLayout>
             </View>
         );
     }

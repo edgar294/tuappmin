@@ -134,6 +134,7 @@ export const CheckboxLayout = ({
 export const SwitchLayout = ({
     field,
     text,
+    onChange,
     form: { handleChange, handleBlur, values, setFieldValue },
     ...props }) => {
     return (
@@ -144,7 +145,9 @@ export const SwitchLayout = ({
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
                     ios_backgroundColor="#3e3e3e"
                     value={values[field.name]}
-                    onValueChange={(newValue) => setFieldValue(field.name, newValue)}
+                    onValueChange={(newValue) => {
+                        setFieldValue(field.name, newValue)
+                    }}
                     {...props}
                 />
             </View>
@@ -204,8 +207,10 @@ export const ButtonSubmitRoundedOutlineLayout = ({
     children,
 }) => {
     return (
-        <TouchableOpacity style={[Styles.btnOutlineRounded, { borderColor: borderColor, ...styles }]}
-            onPress={handleSubmit} disabled={disabled}>
+        <TouchableOpacity
+            style={[Styles.btnOutlineRounded, { borderColor: borderColor, ...styles }]}
+            onPress={handleSubmit}
+            disabled={disabled}>
             {text && <Text style={[Styles.btnText, Styles.fontBold, { color: color }]}>{text}</Text>}
             {children}
         </TouchableOpacity>
@@ -218,20 +223,24 @@ export const pickerSelectLayout = ({
     placeholder,
     data,
     icon,
+    updateValue,
     form: { setFieldValue, values },
     ...props }) => {
     return (
         <View style={Styles.contentForm}>
-            <Text style={[Styles.fontRegular, { color: '#343a40', fontSize: 14, marginBottom: 10 }]}>{placeholder}</Text>
-            <View style={[Styles.form, Styles.formSelectIos]}>
+            <View>
                 <Image source={icon} style={Styles.iconForm}></Image>
 
                 <Picker
                     style={[Styles.input, { height: Platform.OS === 'ios' ? 120 : 0, overflow: 'hidden' }]}
                     selectedValue={values[field.name]}
                     itemStyle={{ height: 130 }}
-                    onValueChange={(itemValue, itemIndex) =>
-                        setFieldValue(field.name, itemValue)
+                    onValueChange={(itemValue, itemIndex) => {
+                        setFieldValue(field.name, itemValue);
+                        if (updateValue) {
+                            updateValue(itemValue);
+                        }
+                    }
                     }>
                     <Picker.Item label={placeholder} value="" />
                     {
