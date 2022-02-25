@@ -22,6 +22,7 @@ class FormCorrespondencia extends React.Component {
             tipoCorrespondencia: [],
             showServices: false,
             apartamentos: [],
+            todos: false,
         };
     }
 
@@ -109,48 +110,52 @@ class FormCorrespondencia extends React.Component {
                 }
                 <Field
                     component={SwitchLayout}
+                    onChange={(value) => {
+                        console.log(value)
+                        this.state.todos = value
+                    }}
                     name="para_todos"
                     text="¿Para todos?"/>
 
                 {
-                    (this.props.tipo == 'casa') ?
-                        <View style={[styles.controlSpace]}>
-                            <View style={styles.buttonView}>
-                                <Field
-                                    component={pickerSelectLayout}
-                                    name="casa"
-                                    placeholder="Casa"
-                                    data={ inmuebles }/>
+                    (!this.state.todos) ?
+                        (this.props.tipo == 'casa') ?
+                            <View style={[styles.controlSpace]}>
+                                <View style={styles.buttonView}>
+                                    <Field
+                                        component={pickerSelectLayout}
+                                        name="casa"
+                                        placeholder="Casa"
+                                        data={ inmuebles }/>
+                                </View>
                             </View>
-                        </View>
+                        :
+                        (this.props.tipo == 'apartamento') ?
+                            <View style={[styles.controlSpace]}>
+                                <View style={styles.buttonView}>
+                                    <Field
+                                        component={pickerSelectLayout}
+                                        name="bloque"
+                                        placeholder="Bloque"
+                                        data={ bloques }
+                                        updateValue={(value) => {
+                                            console.log(value)
+                                            this.setState({
+                                                apartamentos: inmuebles[value]
+                                            });
+                                        }}/>
+                                </View>
+                                <View style={styles.buttonView}>
+                                    <Field
+                                        component={pickerSelectLayout}
+                                        name="apartamento"
+                                        placeholder="Apartamento"
+                                        data={ this.state.apartamentos }/>
+                                </View>
+                            </View>
+                        : null
                     : null
-                }
 
-                {
-                    (this.props.tipo == 'apartamento') ?
-                        <View style={[styles.controlSpace]}>
-                            <View style={styles.buttonView}>
-                                <Field
-                                    component={pickerSelectLayout}
-                                    name="bloque"
-                                    placeholder="Bloque"
-                                    data={ bloques }
-                                    updateValue={(value) => {
-                                        console.log(value)
-                                        this.setState({
-                                            apartamentos: inmuebles[value]
-                                        });
-                                    }}/>
-                            </View>
-                            <View style={styles.buttonView}>
-                                <Field
-                                    component={pickerSelectLayout}
-                                    name="apartamento"
-                                    placeholder="Apartamento"
-                                    data={ this.state.apartamentos }/>
-                            </View>
-                        </View>
-                    : null
                 }
                 <ButtonSubmitLayout
                     handleSubmit={handleSubmit}

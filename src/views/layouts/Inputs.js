@@ -146,7 +146,8 @@ export const SwitchLayout = ({
                     ios_backgroundColor="#3e3e3e"
                     value={values[field.name]}
                     onValueChange={(newValue) => {
-                        setFieldValue(field.name, newValue)
+                        onChange(newValue);
+                        setFieldValue(field.name, newValue);
                     }}
                     {...props}
                 />
